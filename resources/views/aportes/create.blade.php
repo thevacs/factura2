@@ -1,0 +1,52 @@
+@extends('layouts.app')
+@section('content')
+    <div class="container">
+        <div class="card">
+            <div class="card-header bg-dark text-light">
+                Nuevo Aporte
+                <a href="{{ url()->previous() }}" class="btn btn-sm btn-secondary float-right"><i class="fas fa-arrow-left"></i> Regresar</a>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-4">
+                        {!! Form::open(['route' => 'aportes.store', 'method' => 'POST']) !!}
+                        <div class="form-group">
+                            {!! Form::label('nombre', 'Nombre', ['class' => 'form-control-label font-weight-bold']) !!}
+                            {!! Form::text('nombre', null, ['class' => 'form-control', 'placeholder' => 'Denominación del Aporte']) !!}
+                        </div>
+                        <div class="form-group">
+                            {!! Form::label('descripcion', 'Descripción', ['class' => 'form-control-label font-weight-bold']) !!}
+                            {!! Form::text('descripcion', null, ['class' => 'form-control', 'placeholder' => 'Descripción breve']) !!}
+                        </div>
+                        <div class="form-group">
+                            {!! Form::label('acronimo', 'Acronimo/Siglas', ['class' => 'form-control-label font-weight-bold']) !!}
+                            {!! Form::text('acronimo', null, ['class' => 'form-control', 'placeholder' => 'Acronimo o Sigla']) !!}
+                        </div>
+                        <div class="form-group">
+                            {!! Form::label('moneda_id', 'Moneda', ['class' => 'form-control-label font-weight-bold']) !!}
+                            {!! Form::select('moneda_id', \App\Moneda::pluck('nombre','id'), 1, ['class' => 'form-control']) !!}
+                        </div>
+                        <div class="form-group">
+                            {!! Form::label('valor', 'Valor del Aporte', ['class' => 'form-control-label font-weight-bold', 'step' => '0.01']) !!}
+                            {!! Form::number('valor', null, ['class' => 'form-control']) !!}
+                        </div>
+                        {{-- <div class="form-group"> --}}
+                            {{-- {!! Form::label('vigencia_ini', 'Vigencia/Inicio', ['class' => 'form-control-label font-weight-bold']) !!} --}}
+                            {{-- {!! Form::date('vigencia_ini', null, ['class' => 'form-control']) !!} --}}
+                        {{-- </div> --}}
+                        {{-- <div class="form-group"> --}}
+                            {{-- {!! Form::label('vigencia_fin', 'Vigencia/Fin', ['class' => 'form-control-label font-weight-bold']) !!} --}}
+                            {{-- {!! Form::date('vigencia_fin', null, ['class' => 'form-control']) !!} --}}
+                        {{-- </div> --}}
+                        {!! Form::submit('Registrar', ['class' => 'btn btn-primary']) !!}
+                        {!! Form::close() !!}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        
+    </div>
+@endsection
